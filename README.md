@@ -22,7 +22,7 @@ an ensemble of pure states on subsystem A, weighted by measurement probabilities
 
 ### System setup
 
-<img src="figures/AB.png" width="500">
+<img src="figures/AB.png" width="400">
 
 Subsystem A interacts with environment B.  
 After measuring B, we obtain conditional pure states on A.
@@ -51,7 +51,7 @@ This work studies how U(1) symmetry modifies deep thermalization.
 
 We simulate charge-conserving random quantum circuits:
 
-<img src="figures/RQC_U1.png" width="500">
+<img src="figures/RQC_U1.png" width="400">
 
 Key features:
 
@@ -69,7 +69,7 @@ This architecture models:
 ---
 # 📊 Example Result: Finite-Size Scaling of Projected Ensemble Convergence
 
-<img src="figures/Trace_norm_and_size_scaling.png" width="650">
+<img src="figures/Trace_norm_and_size_scaling.png" width="500">
 
 **Trace-norm distance to the universal projected ensemble** as a function of circuit depth for different system sizes.
 
