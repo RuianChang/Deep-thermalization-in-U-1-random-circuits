@@ -93,7 +93,7 @@ This enables defining quantitative baselines for:
 
 ```markdown
 ### Projected Ensemble Convergence
-<img src="figures/Trace_norm_and_size_scaling.png" width="600">
+<img src="figures/Trace_norm_and_size_scaling.pdf" width="600">
 
 Trace-norm distance to the universal limiting ensemble decreases with circuit depth.
 The late-time average approaches to zero as system size increases.
