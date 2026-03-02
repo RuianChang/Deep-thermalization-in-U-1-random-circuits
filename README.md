@@ -1,11 +1,11 @@
 # 🔬 Deep Thermalization in U(1) Random Circuits  
-### High-Performance Simulation Framework for Symmetry-Constrained Quantum Dynamics
+### High-Performance Simulation Framework for Charge-Conserving Quantum Dynamics
 
 ---
 
 ## 📌 Overview
 
-This repository contains high-performance Python simulations for studying the projected ensemble in a subsystem converges to a universal limiting ensemble in U(1)-symmetric quantum circuits.
+This repository contains high-performance Python simulations for studying how the projected ensemble in a subsystem converges to a universal limiting ensemble in U(1)-symmetric (charge-conserving) quantum circuits, demonstrating the deep thermalization in quantum many-body systems.
 
 This project is based on:
 
@@ -13,7 +13,7 @@ This project is based on:
 > **Deep Thermalization under Charge-Conserving Quantum Dynamics**,  
 > PRX Quantum 6, 020343 (2025)
 
-We introduce and numerically validate the concept of **deep thermalization** — the emergence of universal limiting ensembles in symmetry-conserving many-body dynamics.
+We introduce and numerically validate the concept of **deep thermalization** — the emergence of universal limiting ensembles in symmetry-conserving quantum many-body dynamics.
 
 This framework provides:
 
