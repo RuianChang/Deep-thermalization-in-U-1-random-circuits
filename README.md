@@ -1,139 +1,162 @@
-# 🔬 Deep Thermalization in U(1) Random Circuits  
-### High-Performance Simulation Framework for Charge-Conserving Quantum Dynamics
+# 🔬 Deep Thermalization in U(1)-Symmetric Random Circuits
 
----
+High-performance Python simulations for studying symmetry-constrained quantum many-body dynamics, subsystem equilibration, and projected ensemble universality.
 
-## 📌 Overview
+Based on:
 
-This repository contains high-performance Python simulations for studying how the projected ensemble in a subsystem converges to a universal limiting ensemble in U(1)-symmetric (charge-conserving) quantum circuits, demonstrating the deep thermalization in quantum many-body systems.
-
-This project is based on:
-
-> R.-A. Chang, H. Shrotriya, W. W. Ho, and M. Ippoliti,  
-> **Deep Thermalization under Charge-Conserving Quantum Dynamics**,  
+> R.-A. Chang et al.,  
+> *Deep Thermalization under Charge-Conserving Quantum Dynamics*,  
 > PRX Quantum 6, 020343 (2025)
 
-We introduce and numerically validate the concept of **deep thermalization** — the emergence of universal limiting ensembles in symmetry-conserving quantum many-body dynamics.
+---
 
-This framework provides:
+# 🧠 What Is a Projected Ensemble?
 
-- Classical simulations for the subsystem dynamics in U(1)-symmetric (charge-conserving) random circuits -- the convergence to universal limiting ensembles
-- Scaling analysis for deep thermalization 
-- Quantitative diagnostics of subsystem equililibration  
+In modern quantum simulators, we can measure the environment of a subsystem rather than tracing it out.
+
+Instead of only studying the reduced density matrix ρ_A,  
+we condition on measurement outcomes of the environment B.
+
+This generates a **projected ensemble** —  
+an ensemble of pure states on subsystem A, weighted by measurement probabilities.
+
+### System setup
+
+<img src="figures/AB.png" width="500">
+
+Subsystem A interacts with environment B.  
+After measuring B, we obtain conditional pure states on A.
+
+This framework goes beyond standard thermalization by analyzing the *full distribution* of subsystem states rather than only expectation values.
 
 ---
 
-## 🚀 Relevance to Quantum Hardware & Industry
+# 🌊 What Is Deep Thermalization?
 
-Some modern quantum processors operate under physical conservation laws. For example, neutral atom systems operate with charge (number) conservation.
+Deep thermalization refers to the emergence of **universal projected ensembles** in chaotic quantum dynamics.
 
-Understanding:
+In symmetry-free systems:
+- The projected ensemble approaches the Haar distribution.
 
-- How symmetries affect scrambling  
-- When projected ensembles become universal  
+With conservation laws (e.g., U(1) charge conservation):
+- The limiting ensemble acquires structured universal forms.
+- Only coarse-grained conserved quantities determine equilibrium statistics.
+- Microscopic circuit details become irrelevant.
 
-is directly relevant to:
-
-- Quantum benchmarking  
-- Noise-aware algorithm design  
-- Identifying regimes of potential quantum advantage  
-
-This repository provides a classical simulation platform to study those effects quantitatively.
+This work studies how U(1) symmetry modifies deep thermalization.
 
 ---
 
-## 🧠 Core Contributions
+# ⚙️ Model: U(1)-Symmetric Random Circuits
 
-### 1️⃣ Symmetry-Constrained Thermalization
+We simulate charge-conserving random quantum circuits:
 
-We demonstrate that in U(1)-conserving chaotic circuits:
+<img src="figures/RQC_U1.png" width="500">
 
-- Projected subsystem ensembles converge to universal distributions  
-- The limiting ensemble depends only on coarse-grained charge statistics  
-- Microscopic circuit details become irrelevant at late time  
+Key features:
 
-This reveals a symmetry-modified extension of standard quantum thermalization.
+- Two-site unitary gates
+- Exact U(1) charge conservation
+- Random circuit architecture
+- Large bath limit
+
+This architecture models:
+
+- Symmetry-preserving quantum hardware
+- Analog quantum simulators
+- Charge-conserving superconducting qubit circuits
+
+---
+# 📊 Example Result: Finite-Size Scaling of Projected Ensemble Convergence
+
+<img src="figures/Trace_norm_and_size_scaling.png" width="650">
+
+**Trace-norm distance to the universal projected ensemble** as a function of circuit depth for different system sizes.
+
+Key observations:
+
+- The distance decays rapidly in time under U(1)-symmetric chaotic dynamics.
+- A finite late-time plateau appears due to finite-size effects.
+- The late-time average scales as a power law in system size (inset).
+
+This demonstrates quantitatively that:
+
+- The projected ensemble approaches its universal limit.
+- Finite-size corrections shrink systematically with increasing N.
+- Symmetry-constrained dynamics still exhibit universal equilibration.
+
+Such finite-size scaling analysis is directly relevant for benchmarking symmetry-preserving quantum processors, where conservation laws constrain accessible Hilbert space growth.
+
+
+# 📊 Main Results
+
+## 1️⃣ Universal Limiting Ensembles
+
+We show that projected ensembles converge to a generalized universal form determined only by:
+
+- Initial charge distribution
+- Measurement basis statistics
+
+This demonstrates a symmetry-aware extension of standard thermalization.
 
 ---
 
-### 2️⃣ High-Performance Numerical Simulations
+## 2️⃣ Finite-Size Scaling & Classical Simulability
 
-Implemented scalable simulations featuring:
+We perform large-scale simulations (up to 24 qubits) and analyze:
 
-- Charge-sector-resolved Hilbert space decomposition  
-- Efficient tensor contractions  
-- Large-scale Monte Carlo sampling  
-- Parallel execution on HPC clusters (Slurm workflows)  
+- Trace-norm distance to limiting ensemble
+- Finite-size scaling of convergence
+- Hilbert-space growth under symmetry constraints
 
-Simulations reach:
+This provides quantitative insight into:
 
-- Up to 24 qubits  
-- Trace-norm convergence below 10⁻³  
-- Finite-size scaling of computational cost  
-
----
-
-### 3️⃣ Quantitative Classical Benchmarking
-
-We analyze:
-
-- Trace-norm distance to universal limiting ensembles  
-- Finite-size scaling of computational cost  
-- Hilbert-space growth under symmetry constraints  
-
-This enables defining quantitative baselines for:
-
-> When classical simulation becomes intractable under symmetry constraints.
+- When classical simulation remains efficient
+- How conservation laws alter scrambling dynamics
+- Scaling toward potential quantum advantage
 
 ---
 
-## 📊 Example Results
+## 3️⃣ High-Performance Simulation Framework
 
-### Projected Ensemble Convergence
-<img src="figures/Trace_norm_and_size_scaling.png" width="600">
+Implemented in Python with:
 
-Trace-norm distance to the universal limiting ensemble decreases with circuit depth.
-The late-time average approaches to zero as system size increases.
+- Charge-sector-resolved Hilbert space decomposition
+- Efficient tensor contractions
+- Monte Carlo sampling
+- Parallelized HPC workflows (Slurm-based)
 
-
-
-## 🏗 Technical Stack
-
-- Python  
-- NumPy / SciPy  
-- Parallel computing (Slurm HPC workflows)  
-- Tensor contraction methods  
-- Monte Carlo sampling  
-- Data analysis & visualization  
+Designed for scalability and reproducibility.
 
 ---
 
-## 📂 Repository Structure
+# 🔎 Relevance to Quantum Hardware & Industry
+
+Conservation laws are intrinsic to physical quantum systems.
+
+Understanding symmetry-constrained dynamics is relevant for:
+
+- Hardware benchmarking under physical constraints
+- Diagnosing scrambling and equilibration
+- Designing symmetry-aware algorithms
+- Identifying classical-to-quantum crossover regimes
+
+This repository provides a classical simulation platform for studying these effects quantitatively.
+
+---
+
+# 🏗 Repository Structure
 
 ```
 src/                # Core simulation code
-figures/            # Generated plots
+figures/            # Diagrams and result plots
 notebooks/          # Analysis scripts (optional)
 README.md
 ```
 
 ---
 
-## 🔎 Research Context
-
-Deep thermalization extends conventional quantum thermalization by studying the full projected ensemble rather than only reduced density matrices.
-
-We show that:
-
-- U(1) symmetry induces structured universal ensembles  
-- Only polynomial data (charge distributions) determine equilibrium statistics  
-- Projected ensembles form generalized Scrooge ensembles  
-
-This provides a symmetry-aware extension of random-state universality.
-
----
-
-## 👤 Author
+# 👤 Author
 
 Rui-An (Ryan) Chang  
 PhD Candidate in Quantum Information Science  
@@ -143,13 +166,13 @@ Publication: PRX Quantum (2025)
 
 ---
 
-## 📌 Future Directions
+# 📌 Outlook
 
-This framework can be extended toward:
+Future extensions include:
 
-- Noise-aware operator growth diagnostics  
-- Magic growth under symmetry constraints  
-- Hardware benchmarking for superconducting qubits  
-- Identifying classical-to-quantum computational crossover  
+- Noise-aware symmetry diagnostics
+- Operator growth and magic under conservation laws
+- Benchmarking protocols for hardware-constrained architectures
+- Large-scale simulation with GPU acceleration
 
 ---
